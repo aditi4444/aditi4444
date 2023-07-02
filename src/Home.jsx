@@ -21,7 +21,8 @@ const Home = () => {
       fetch('https://api.chucknorris.io/jokes/random')
          .then((response) => response.json())
          .then((data) => {
-            console.log('data loading......',data);
+
+            // Setting dummy data for proper pagination
             setData(dummyData);
          })
          .catch((err) => {
@@ -29,9 +30,7 @@ const Home = () => {
          });
    }, []);
 
-
   const selectItem = (item) => {
-    console.log('One item selected.....');
     setSelectedItem(item);
     setShowSelectedItem(true);
    }
@@ -43,7 +42,6 @@ const Home = () => {
 
   const changePagination = (direction) => {
     const selectedItemIndex = data.indexOf(selectedItem);
-    console.log(selectedItemIndex, '???????????ß');
 
     // Updating the value of item selected
     const newItemBack = data.at(selectedItemIndex - 1);
@@ -53,11 +51,15 @@ const Home = () => {
     if(direction === 'forward') setSelectedItem(newItemForward);
   }
 
+  const startLoadingData = () => {
+    console.log('Start Loading Data');
+  }
+
   return (
       <div className='parent'>
         <Header headerColor={headerColor} />
         <Body selectedItem={selectedItem} showSelectedItem={showSelectedItem} setShowSelectedItem={setShowSelectedItem} selectItem={selectItem} data={data} />
-        <Footer selectedItem={selectedItem} showSelectedItem={showSelectedItem} changeHeaderColor={changeHeaderColor} data={data} changePagination={changePagination} />
+        <Footer selectedItem={selectedItem} showSelectedItem={showSelectedItem} changeHeaderColor={changeHeaderColor} data={data} changePagination={changePagination} loadData={startLoadingData} />
       </div>
     );
 }

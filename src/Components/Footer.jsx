@@ -13,12 +13,8 @@ const theme = createTheme({
   },
 });
 const Footer = (props) => {
-    const { changeHeaderColor, showSelectedItem, selectedItem, data, changePagination } = props;
-    
-    const loadData = () => {
-        console.log('Loading Data.....');
-    }
-
+    const { changeHeaderColor, showSelectedItem, selectedItem, data, changePagination, loadData } = props;
+  
     return (
         <ThemeProvider theme={theme}>
             <Box className='footer'>

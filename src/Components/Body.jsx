@@ -19,8 +19,8 @@ const Body = (props) => {
                 <div id="App"></div>
                 <h3>Data List</h3>
                 <ul>
-                  { data?.map((item, index) => {
-                    return <li key={index} style={{ cursor: 'pointer', paddingTop:'10px'}} onClick={() => selectItem(item)}>{item.value}</li>
+                  { data?.map((item) => {
+                    return <li key={item.id} style={{ cursor: 'pointer', paddingTop:'10px'}} onClick={() => selectItem(item)}>{item.value}</li>
                   }) }
                 </ul>
               </div>}
